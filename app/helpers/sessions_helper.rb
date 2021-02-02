@@ -12,8 +12,14 @@ module SessionsHelper
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
-  def user_signed_in?
-    !current_user_nil?
+#  def user_signed_in?
+#    !current_user.nil?
+#  end
+
+  def destroy
+    sign_out
+    flash[:success] = "Logout realizado com sucesso!"
+    redirect_to entrar_path
   end
 
 end
