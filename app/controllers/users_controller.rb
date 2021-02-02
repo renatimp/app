@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
+  before_action :require_logged_in_user, only: [:show, :edit, :update]
+
   def new
+    redirect_to user_contacts_path(current_user) unless current_user.blank?
     @user = User.new
   end
 
