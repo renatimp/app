@@ -1,39 +1,33 @@
-<div class="container">
+<div class="container ">
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="well well-sm">
                 <div class="row">
                     <div class="col-sm-6 col-md-4">
-                        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+                        <% unless @contact.avatar.blank?%>
+                            <%= image_tag @contact.avatar.url(:medium), class: "img-rounded img-responsive" %>
+                        <% else %>
+                            <%= image_tag "/images/missing.jpg" , class: "img-rounded img-responsive"%>
+                        <% end -%>
                     </div>
                     <div class="col-sm-6 col-md-8">
                         <h4><%= @contact.name %></h4>
-                        <small><cite title="San Francisco, USA">San Francisco, USA <i class="glyphicon glyphicon-map-marker">
-                        </i></cite></small>
+                        <cite title="San Francisco, USA"><%= link_to @contact.city , "https://maps.google.com/maps?q=#{@contact.city}" , target: "_blank"%>  <i class="glyphicon glyphicon-map-marker">
+                        </i></cite>
+
                         <p>
                             <i class="glyphicon glyphicon-envelope"></i>email@example.com
                             <br />
-                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
+                            <i class="glyphicon glyphicon-phone"></i><%= @contact.phone %>
                             <br />
                             <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
                         <!-- Split button -->
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-primary">
-                                Social</button>
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                <span class="caret"></span><span class="sr-only">Social</span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Twitter</a></li>
-                                <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
-                                <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Github</a></li>
-                            </ul>
-                        </div>
+                         <%= link_to "Editar", edit_user_contact_path(current_user), class: "btn btn-primary" %>
+                         <%= link_to "Voltar", user_contacts_path(current_user) , class: "btn btn-primary"%>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+

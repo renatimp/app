@@ -4,9 +4,9 @@
   </div>
   <div class="col-md-6 col-md-offset-3 col-xs-12">
     <%= form_for @user do |f| %>
-      <%= render 'users/fields', f: f%>
+      <%= render 'users/fields', x: f %>
 
-      <%= f.submit 'Cadastrar', class: "btn btn-info" %>
+      <%= f.submit 'Cadastrar', class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

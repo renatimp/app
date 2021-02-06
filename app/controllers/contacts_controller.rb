@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
 
 
   def index
-    @contacts = current_user.contacts
+    @contacts = current_user.contacts.order(:name).page(params[:page])
   end
 
   def show
@@ -54,8 +54,11 @@ class ContactsController < ApplicationController
     end
   end
 
+
   private
     def contact_params
-      params.require(:contact).permit(:name, :phone)
+      params.require(:contact).permit(:name, :phone, :first, :avatar, :city)
     end
+
+
 end

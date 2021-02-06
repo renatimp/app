@@ -1,2 +1,8 @@
-<h1>StaticPages#index</h1>
-<p>Find me in app/views/static_pages/index.html.erb</p>
+
+<div class="jumbotron text-center">
+  <h2>Por favor, cadastrar-se ou fazer login!</h2>
+  <br>
+  <%= link_to "Entrar", entrar_path, class: "btn btn-primary" %>
+  <%= link_to "Cadastrar", new_user_path, class: "btn btn-primary" %>
+
+</div>
